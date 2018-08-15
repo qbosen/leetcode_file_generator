@@ -11,6 +11,7 @@ def html_parse(text):
         '&gt;': '>',
         '&circ;': '^',
         '&tilde;': '~',
+        '&nbsp;': ' ',
     }
     text = text.replace('&amp;', '&')
     for k, v in mapping.items():
