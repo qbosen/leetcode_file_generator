@@ -1,4 +1,6 @@
 # leetcode files generator
+[中文](README-zh.md)
+
 simple tools to generate leetcode exercises files conveniently 
 
 usage:
