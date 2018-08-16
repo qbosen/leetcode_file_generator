@@ -10,7 +10,7 @@ except ImportError:
 
 
 def main():
-    q_str = sys.argv[1]
+    q_str = ' '.join(sys.argv[1:])
     id_list = query(q_str)
     info_list = get_info_list('dumps.txt')
     has_result = False
