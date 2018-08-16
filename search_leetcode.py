@@ -13,10 +13,14 @@ def main():
     q_str = sys.argv[1]
     id_list = query(q_str)
     info_list = get_info_list('dumps.txt')
+    has_result = False
     for qid in id_list:
         display = get_desc(info_list, qid)
         if display:
+            has_result = True
             print display
+    if not has_result:
+        print 'no questions match your search criteria.'
 
 
 def query(text):
