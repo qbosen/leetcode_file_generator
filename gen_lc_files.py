@@ -44,6 +44,7 @@ def generate_file(base_path, file_name, content):
     full_path = os.path.join(base_path, file_name)
     with open(full_path, 'w') as f:
         f.write(content)
+    print 'create file: %s' % full_path
 
 
 def get_level(info_dict):
