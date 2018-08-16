@@ -39,3 +39,9 @@ The tool is integrated in [Alfred](https://www.alfredapp.com) workflow
 
 Project Link: [Find Leetcode](https://github.com/qbosen/Alfred-WorkFlow/tree/master/FindLeetCode)
 
+
+### Pictures:
+1. Searching questions:
+![](pic/search.png)
+2. Generate files
+![](pic/gen_file.png)

@@ -33,3 +33,9 @@ python html_parser.py lc-2018-08.html
 此工具已经集成到了 [Alfred](https://www.alfredapp.com) workflow
 
 链接地址: [Find Leetcode](https://github.com/qbosen/Alfred-WorkFlow/tree/master/FindLeetCode)
+
+### 图片:
+1. 搜索功能:
+![](pic/search.png)
+2. 生成文件
+![](pic/gen_file.png)
