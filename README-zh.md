@@ -11,8 +11,8 @@
 src_path = "your/source/path"
 ```
 ```bash
-python gen_lc_files.py 103
+python gen_lc_files.py [qid]
 ``` 
 **注意:** 
 * python version: `2.7`
-* 上面事例中的 `103` 可以被替换为任意题号 
+* 当前仅支持 `leetcode-cn.com`, 如果需要对 `leetcode.com` 进行支持，可以提交 `issue` 或者 `pull request`

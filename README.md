@@ -11,8 +11,9 @@ usage:
 src_path = "your/source/path"
 ```
 ```bash
-python gen_lc_files.py 103
+python gen_lc_files.py [qid]
 ``` 
 **note:** 
-* python version: `2.7`
-* `103` can be replaced with other question id 
+1. python version: `2.7`
+2. all codes are based on `leetcode-cn.com`, 
+if `leetcode.com` version is required, you can commit `issue` or `pull request`
