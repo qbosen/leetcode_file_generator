@@ -1,5 +1,5 @@
 # -*- coding:utf-8 -*-
-# /usr/bin/python dump_lc.py [default.html]
+# /usr/bin/python html_parser.py [default.html]
 import sys
 from bs4 import BeautifulSoup
 
