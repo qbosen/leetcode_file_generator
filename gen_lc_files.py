@@ -28,10 +28,10 @@ def main():
     md = table_pattern.format(title=dp.title, content=dp.content, date=date, **info)
     generate_file(package_path, 'README.md', md)
 
-    solution = class_pattern.format(en_level=en_level, author='abosen', date=date_idea, **info)
+    solution = class_pattern.format(en_level=en_level, author=author, date=date_idea, **info)
     generate_file(package_path, 'Solution.java', solution)
 
-    test = test_class_pattern.format(en_level=en_level, author='abosen', date=date_idea, **info)
+    test = test_class_pattern.format(en_level=en_level, author=author, date=date_idea, **info)
     generate_file(package_path, 'SolutionTest.java', test)
 
 

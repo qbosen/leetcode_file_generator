@@ -1,6 +1,7 @@
 # -*- coding:utf-8 -*-
 
 src_path = "your/source/path"
+author = "Administrator"
 url_pattern = "https://leetcode-cn.com/problems/%s/description/"
 
 table_pattern = '''### {title}
