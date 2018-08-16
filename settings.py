@@ -13,13 +13,13 @@ md_pattern = '''### {title}
 |英文名|{en_name}|
 |难度|{level}|
 |通过率|{percent}|
-|链接|[{path}][desc_url]
+|链接|[{path}](https://leetcode-cn.com/problems/{path}/description/)
 
 ```
 {content}
 ```
-### 思路 {date}\n\n
-[desc_url]:[https://leetcode-cn.com/problems/{path}/description/]'''
+### 思路 {date}
+'''
 
 class_pattern = '''package {en_level}.q{index};
 
