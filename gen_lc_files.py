@@ -19,13 +19,13 @@ def main():
         return
 
     info = get_info(num)
-    dp = DescriptionParser().parse(url_pattern % info['path'])
+    dp = DescriptionParser().parse(detail_url % info['path'])
     package_path = make_dir(info)
     en_level = get_level(info)
     date = time.strftime('%Y-%m-%d', time.localtime())
     date_idea = time.strftime('%Y/%m/%d', time.localtime())
 
-    md = table_pattern.format(title=dp.title, content=dp.content, date=date, **info)
+    md = md_pattern.format(title=dp.title, content=dp.content, date=date, **info)
     generate_file(package_path, 'README.md', md)
 
     solution = class_pattern.format(en_level=en_level, author='abosen', date=date_idea, **info)
