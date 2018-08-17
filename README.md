@@ -11,8 +11,8 @@ src_path = "your/source/path"
 2. run `search_leetcode.py` to search `keyword`
 python search_leetcode.py [keyword]
 
-3. run `gen_lc_files.py` by giving specified leetcode question id
-python gen_lc_files.py [qid]
+3. run `gen_files.py` by giving specified leetcode question id
+python gen_files.py [qid]
 ``` 
 ### Note:
 1. python version: `2.7`

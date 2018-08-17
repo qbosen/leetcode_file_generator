@@ -11,8 +11,8 @@ src_path = "your/source/path"
 2. 运行 `search_leetcode.py` 搜索关键字
 python search_leetcode.py [keyword]
 
-3. 给定一个题号，运行 `gen_lc_files.py` 生成文件
-python gen_lc_files.py [qid]
+3. 给定一个题号，运行 `gen_files.py` 生成文件
+python gen_files.py [qid]
 ``` 
 ### 注意:
 1. python version: `2.7`
