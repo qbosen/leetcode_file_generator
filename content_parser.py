@@ -1,6 +1,7 @@
 # -*- coding:utf-8 -*-
 import re
 import urllib2
+from settings import detail_url
 
 
 def html_parse(text):
@@ -24,7 +25,8 @@ class DescriptionParser(object):
         self._title = ''
         self._content = ''
 
-    def parse(self, url):
+    def parse(self, path):
+        url = detail_url % path
         text = urllib2.urlopen(url).read()
         _title = re.search(r'<title>(\S+).*</title>', text).group(1)
         self._title = html_parse(_title)

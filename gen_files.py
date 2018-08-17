@@ -19,7 +19,7 @@ def main():
         return
 
     info = get_info(num)
-    dp = DescriptionParser().parse(detail_url % info['path'])
+    dp = DescriptionParser().parse(info['path'])
     package_path = make_dir(info)
     en_level = get_level(info)
     date = time.strftime('%Y/%m/%d', time.localtime())
