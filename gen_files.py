@@ -1,5 +1,5 @@
 # -*- coding:utf-8 -*-
-# /usr/bin/python gen_lc_files.py 100
+# /usr/bin/python gen_files.py 100
 
 import sys
 import time
