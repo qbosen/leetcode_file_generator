@@ -1,5 +1,6 @@
 # -*- coding:utf-8 -*-
-# /usr/bin/python lc_table_parser.py [default.html]
+# /usr/bin/python html_parser.py [default.html]
+
 import sys
 from bs4 import BeautifulSoup
 
@@ -17,8 +18,10 @@ def main():
         tds = tr.find_all('td')
         index, dic = parse_td(tds)
         data_dic[index] = dic
+    print 'complete parse file: %s' % filename
     with open('dumps.txt', 'wr') as f:
         pickle.dump(data_dic, f)
+    print 'success update dumps.txt!'
 
 
 def parse_td(tds):

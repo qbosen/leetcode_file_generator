@@ -1,10 +1,15 @@
 # -*- coding:utf-8 -*-
 
-src_path = "your/source/path"
+
+src_path = "your/src/path"
 author = "Administrator"
+search_limit = 10
+
 url_pattern = "https://leetcode-cn.com/problems/%s/description/"
 
-table_pattern = '''### {title}
+search_display = "{index:0>3s} {level} {percent} {ch_name}"
+
+md_pattern = '''### {title}
 |\t|\t|
 |---:|:---|
 |题号|{index:0>3s}|
@@ -12,13 +17,13 @@ table_pattern = '''### {title}
 |英文名|{en_name}|
 |难度|{level}|
 |通过率|{percent}|
-|链接|[{path}][desc_url]
+|链接|[{path}](https://leetcode-cn.com/problems/{path}/description/)
 
 ```
 {content}
 ```
-### 思路 {date}\n\n
-[desc_url]:[https://leetcode-cn.com/problems/{path}/description/]'''
+### 思路 {date}
+'''
 
 class_pattern = '''package {en_level}.q{index};
 
@@ -47,3 +52,7 @@ public class SolutionTest {{
     }}
 }}
 '''
+
+detail_url = "https://leetcode-cn.com/problems/%s/description/"
+
+query_url = "https://leetcode-cn.com/problems/api/filter-questions/%s"
