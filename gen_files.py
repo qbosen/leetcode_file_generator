@@ -1,36 +1,46 @@
 # coding=utf-8
 # /usr/bin/python gen_files.py 100
 
+import os
 import sys
 import time
-import os
+
 from settings import *
+from settings_advanced import *
 
 try:
     import cPickle as pickle
 except ImportError:
     import pickle
 from content_parser import DescriptionParser
+from content_parser_advance import AdvancedDescriptionParser
 
 
 def main():
-    num = sys.argv[1] if len(sys.argv) > 1 else ''
+    num = sys.argv[1] if len(sys.argv) > 1 else '11'
     if not num:
         return
 
     info = get_info(num)
-    dp = DescriptionParser().parse(info['path'])
     package_path = make_dir(info)
     en_level = get_level(info)
     date = time.strftime('%Y/%m/%d', time.localtime())
 
-    md = md_pattern.format(title=dp.title, content=dp.content, date=date, **info)
+    if not enable_advance:
+        dp = DescriptionParser().parse(info['path'])
+        md = md_pattern.format(title=dp.title, content=dp.content, date=date, **info)
+        solution = class_pattern.format(en_level=en_level, author=author, date=date, **info)
+        test = test_class_pattern.format(en_level=en_level, author=author, date=date, **info)
+    else:
+        dp = AdvancedDescriptionParser().parse(info['path'])
+        dp_data = dp.data
+        # print dp_data
+        md = ad_md_pattern.format(date=date, **dp_data)
+        solution = ad_class_pattern.format(en_level=en_level, author=author, date=date, **dp_data)
+        test = ad_test_class_pattern.format(en_level=en_level, author=author, date=date, **dp_data)
+
     generate_file(package_path, 'README.md', md)
-
-    solution = class_pattern.format(en_level=en_level, author=author, date=date, **info)
     generate_file(package_path, 'Solution.java', solution)
-
-    test = test_class_pattern.format(en_level=en_level, author=author, date=date, **info)
     generate_file(package_path, 'SolutionTest.java', test)
 
 
@@ -42,7 +52,7 @@ def get_info(num):
 def generate_file(base_path, file_name, content):
     full_path = os.path.join(base_path, file_name)
     with open(full_path, 'w') as f:
-        f.write(content)
+        f.write(content.encode('utf-8'))
     print 'create file: %s' % full_path
 
 
