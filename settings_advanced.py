@@ -17,12 +17,22 @@ query_keys = [
 debug_mode = True
 language = 'java'
 
-convert_tags = {
+tags_map = {
     'em': '_',
     'strong': '**',
-    'p': '\n'
+    'p': '\n',
+    'pre': "\n```\n",
 }
 
+symbol_map = {
+    '&amp;': '&',
+    '&quot;': '"',
+    '&lt;': '<',
+    '&gt;': '>',
+    '&circ;': '^',
+    '&tilde;': '~',
+    '&nbsp;': ' ',
+}
 clearable_tags = ['em', 'strong', ]
 
 ad_md_pattern = u'''### {title}
