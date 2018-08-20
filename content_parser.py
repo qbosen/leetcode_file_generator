@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# coding=utf-8
 import re
 import urllib2
 from settings import detail_url

@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# coding=utf-8
 import urllib2
 import sys
 from settings import query_url, search_limit, search_display
