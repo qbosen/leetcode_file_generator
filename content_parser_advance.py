@@ -14,6 +14,21 @@ class AdvancedDescriptionParser(object):
 
     def parse(self, path):
         items = query_question(path)
+        # get topics
+        topics = []
+        topics_en = []
+        for topic in items['topicTags']:
+            topics.append(topic['translatedName'])
+            topics_en.append(topic['name'])
+        # get acRate
+        stats = json.loads(items['stats'])
+        # get sample codes
+        codes = ''
+        definition_list = json.loads(items['codeDefinition'])
+        for definition in definition_list:
+            if language == definition['value']:
+                codes = definition['defaultCode']
+                break
         self.data['index'] = items['questionId']
         self.data['title'] = items['translatedTitle']
         self.data['title_en'] = items['questionTitle']
@@ -21,23 +36,11 @@ class AdvancedDescriptionParser(object):
         self.data['path'] = path
         self.data['difficulty'] = items['difficulty']
         self.data['case'] = items['sampleTestCase']
-        # get topics
-        topics = []
-        topics_en = []
-        for topic in items['topicTags']:
-            topics.append(topic['translatedName'])
-            topics_en.append(topic['name'])
-
         self.data['topics_en'] = ', '.join(topics_en)
         self.data['topics'] = ', '.join(topics)
-        stats = json.loads(items['stats'])
         self.data['percent'] = stats['acRate']
-        # get sample codes
-        definition_list = json.loads(items['codeDefinition'])
-        for definition in definition_list:
-            if language == definition['value']:
-                self.data['codes'] = definition['defaultCode']
-                break
+        self.data['codes'] = codes
+
         return self
 
     @property
