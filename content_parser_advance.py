@@ -35,7 +35,7 @@ class AdvancedDescriptionParser(object):
         self.data['content'] = Html2md(items['translatedContent']).format(level)
         self.data['path'] = path
         self.data['difficulty'] = items['difficulty']
-        self.data['case'] = items['sampleTestCase']
+        self.data['case'] = items['sampleTestCase'].replace('\n', '\n\t\t// simpleCase: ')
         self.data['topics_en'] = ', '.join(topics_en)
         self.data['topics'] = ', '.join(topics)
         self.data['percent'] = stats['acRate']
@@ -118,5 +118,7 @@ def query_question(query_path=None):
 
 
 if __name__ == '__main__':
+    # keep this value false otherwise wrong result you will get
+    debug_mode = True
     adp = AdvancedDescriptionParser().parse(None)
-    print adp.content
+    print adp.case
