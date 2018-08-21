@@ -90,6 +90,29 @@ class Html2md(object):
     def pure_text_l9(self):
         return self.pure_html_l0()._img2md()._empty_tags()
 
+    def format(self, level=8):
+        # 8 is my usage level
+        if level == 0:
+            return self.pure_html_l0().read()
+        elif level == 1:
+            return self.remove_ptag_l1().read()
+        elif level == 2:
+            return self.md_preview_l2().read()
+        elif level == 3:
+            return self.convert_md_tags_l3().read()
+        elif level == 4:
+            return self.img_url_md_l4().read()
+        elif level == 5:
+            return self.keep_html_pre_l5().read()
+        elif level == 6:
+            return self.md_most_but_html_pre_l6().read()
+        elif level == 7:
+            return self.md_most_without_html_l7().read()
+        elif level == 8:
+            return self.pure_text_but_pre_l8().read()
+        elif level == 9:
+            return self.pure_text_l9().read()
+
 
 def trans_symbol(text, mapping):
     for k, v in mapping.items():
@@ -183,25 +206,6 @@ if __name__ == '__main__':
 <strong>输出:</strong> 49</pre>'''
     for i in range(0, 10):
         print '\n# Style %s' % str(i)
-        if i == 0:
-            print Html2md(t).pure_html_l0().read()
-        elif i == 1:
-            print Html2md(t).remove_ptag_l1().read()
-        elif i == 2:
-            print Html2md(t).md_preview_l2().read()
-        elif i == 3:
-            print Html2md(t).convert_md_tags_l3().read()
-        elif i == 4:
-            print Html2md(t).img_url_md_l4().read()
-        elif i == 5:
-            print Html2md(t).keep_html_pre_l5().read()
-        elif i == 6:
-            print Html2md(t).md_most_but_html_pre_l6().read()
-        elif i == 7:
-            print Html2md(t).md_most_without_html_l7().read()
-        elif i == 8:
-            print Html2md(t).pure_text_but_pre_l8().read()
-        elif i == 9:
-            print Html2md(t).pure_text_l9().read()
+        print Html2md(t).format(i)
 
     # print Html2md(t)._stash_pre_style()._pop_pre_style().read()
