@@ -18,6 +18,8 @@ from content_parser_advance import AdvancedDescriptionParser
 
 def main():
     num = sys.argv[1] if len(sys.argv) > 1 else '11'
+    level = sys.argv[2] if len(sys.argv) > 2 else None
+    level = int(level) if level else default_format
     if not num:
         return
 
@@ -32,7 +34,7 @@ def main():
         solution = class_pattern.format(en_level=en_level, author=author, date=date, **info)
         test = test_class_pattern.format(en_level=en_level, author=author, date=date, **info)
     else:
-        dp = AdvancedDescriptionParser().parse(info['path'])
+        dp = AdvancedDescriptionParser().parse(info['path'], level)
         dp_data = dp.data
         # print dp_data
         md = ad_md_pattern.format(date=date, **dp_data)
