@@ -9,6 +9,10 @@ language = 'java'
 # keep this value false otherwise wrong result you will get
 debug_mode = False
 
+# README content format type (0..9)
+# style looks more markdown when numbers grow
+default_format = 8
+
 # the map of tags and markdown labels
 tags_map = {
     'em': '_',

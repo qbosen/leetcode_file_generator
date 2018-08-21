@@ -4,7 +4,7 @@ import cookielib
 import json
 import ssl
 import urllib2
-
+from html2md import Html2md
 from settings_advanced import *
 
 
@@ -12,7 +12,7 @@ class AdvancedDescriptionParser(object):
     def __init__(self):
         self.data = {}
 
-    def parse(self, path):
+    def parse(self, path, level=8):
         items = query_question(path)
         # get topics
         topics = []
@@ -32,7 +32,7 @@ class AdvancedDescriptionParser(object):
         self.data['index'] = items['questionId']
         self.data['title'] = items['translatedTitle']
         self.data['title_en'] = items['questionTitle']
-        self.data['content'] = items['translatedContent']
+        self.data['content'] = Html2md(items['translatedContent']).format(level)
         self.data['path'] = path
         self.data['difficulty'] = items['difficulty']
         self.data['case'] = items['sampleTestCase']
@@ -57,7 +57,6 @@ class AdvancedDescriptionParser(object):
 
     @property
     def content(self):
-        # todo simplify the html by html2md.py
         return self.data['content']
 
     @property
