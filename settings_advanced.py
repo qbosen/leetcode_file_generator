@@ -1,29 +1,22 @@
 # coding=utf-8
 
+# options that enable advanced feature
 enable_advance = True
 
-query_keys = [
-    'questionId',
-    'questionTitle',
-    'translatedTitle',
-    'translatedContent',
-    'difficulty',
-    'stats',
-    'codeDefinition',
-    'sampleTestCase',
-    r'topicTags{name\n translatedName}'
-]
-
-debug_mode = True
+# language setting is related to the template code
 language = 'java'
 
+# keep this value false otherwise wrong result you will get
+debug_mode = False
+
+# the map of tags and markdown labels
 tags_map = {
     'em': '_',
     'strong': '**',
     'p': '\n',
-    'pre': "\n```\n",
 }
 
+# html symbol mapping
 symbol_map = {
     '&amp;': '&',
     '&quot;': '"',
@@ -33,6 +26,8 @@ symbol_map = {
     '&tilde;': '~',
     '&nbsp;': ' ',
 }
+# the tags will be cleared in pre scope when get md preview
+# or remain when get html preview
 clearable_tags = ['em', 'strong', ]
 
 ad_md_pattern = u'''### {title}
@@ -77,3 +72,16 @@ public class SolutionTest {{
     }}
 }}
 '''
+
+# query part
+query_keys = [
+    'questionId',
+    'questionTitle',
+    'translatedTitle',
+    'translatedContent',
+    'difficulty',
+    'stats',
+    'codeDefinition',
+    'sampleTestCase',
+    r'topicTags{name\n translatedName}'
+]
