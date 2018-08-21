@@ -6,6 +6,8 @@ from settings_advanced import tags_map, clearable_tags, symbol_map
 class Html2md(object):
     def __init__(self, html):
         self._html = html
+        self.__stash = {}
+        self.__pop = {}
 
     def _trans_symbol(self, mapping):
         self._html = trans_symbol(self._html, mapping)
@@ -36,6 +38,25 @@ class Html2md(object):
         self._html = format_lines(self._html)
         return self
 
+    def _stash_pre_style(self):
+        for tag in clearable_tags:
+            stag = '<%s>' % tag
+            ptag = '<__%s>' % tag
+            self.__stash[stag] = ptag
+            self.__pop[ptag] = stag
+        self._html = trans_tags_separately_in_scope(self._html, 'pre', self.__stash)
+        self._replace('<pre>', '@pre@')._replace('</pre>', '@/pre@')
+        return self
+
+    def _pop_pre_style(self):
+        self._replace('@pre@', '<pre>')._replace('@/pre@', '</pre>')
+        self._html = trans_tags_separately_in_scope(self._html, 'pre', self.__pop)
+        return self
+
+    def _replace(self, fr, to):
+        self._html = self._html.replace(fr, to)
+        return self
+
     def read(self):
         return self._format_lines()._html
 
@@ -49,10 +70,19 @@ class Html2md(object):
         return self.remove_ptag_l1()._trans_tags_in_scope('pre', '')._replace_tag('pre', '\n```\n')
 
     def convert_md_tags_l3(self):
-        return self.pure_html_l0()._trans_tags_in_scope('pre', '')._tags2md(tags_map)
+        return self.md_preview_l2()._tags2md(tags_map)
 
     def img_url_md_l4(self):
         return self.convert_md_tags_l3()._img2md()
+
+    def keep_html_pre_l5(self):
+        return self._stash_pre_style().remove_ptag_l1()._tags2md(tags_map)._pop_pre_style()
+
+    def md_most_but_html_pre_l6(self):
+        return self._stash_pre_style().md_most_without_html_l7()._pop_pre_style()
+
+    def md_most_without_html_l7(self):
+        return self.img_url_md_l4()._empty_tags()
 
     def pure_text_but_pre_l8(self):
         return self.md_preview_l2()._img2md()._empty_tags()
@@ -67,17 +97,29 @@ def trans_symbol(text, mapping):
     return text
 
 
-def trans_tags_in_scope(text, tag_scope, to=''):
-    def clear_tags(match):
+def trans_tags_separately_in_scope(text, tag_scope, mapping):
+    def trans_tags(match):
+        value = match.group(0)
+        for fr, to in mapping.items():
+            value = value.replace(fr, to)
+        return value
+
+    pattern = re.compile(r'(<%s>.*?</%s>)' % (tag_scope, tag_scope), re.S)
+    pure_text = re.sub(pattern, trans_tags, text)
+    return pure_text
+
+
+def trans_tags_in_scope(text, tag_scope, to='', target_tags=clearable_tags):
+    def trans_tags(match):
         tags = []
-        for tag in clearable_tags:
+        for tag in target_tags:
             tags.append('<%s>' % tag)
             tags.append('</%s>' % tag)
         options = '%s' % '|'.join(tags)
         return re.sub(options, to, match.group(0))
 
     pattern = re.compile(r'(<%s>.*?</%s>)' % (tag_scope, tag_scope), re.S)
-    pure_text = re.sub(pattern, clear_tags, text)
+    pure_text = re.sub(pattern, trans_tags, text)
     return pure_text
 
 
@@ -139,4 +181,27 @@ if __name__ == '__main__':
 
 <pre><strong>输入:</strong> [1,8,6,2,5,4,8,3,7]
 <strong>输出:</strong> 49</pre>'''
-    print Html2md(t).img_url_md_l4().read()
+    for i in range(0, 10):
+        print '\n# Style %s' % str(i)
+        if i == 0:
+            print Html2md(t).pure_html_l0().read()
+        elif i == 1:
+            print Html2md(t).remove_ptag_l1().read()
+        elif i == 2:
+            print Html2md(t).md_preview_l2().read()
+        elif i == 3:
+            print Html2md(t).convert_md_tags_l3().read()
+        elif i == 4:
+            print Html2md(t).img_url_md_l4().read()
+        elif i == 5:
+            print Html2md(t).keep_html_pre_l5().read()
+        elif i == 6:
+            print Html2md(t).md_most_but_html_pre_l6().read()
+        elif i == 7:
+            print Html2md(t).md_most_without_html_l7().read()
+        elif i == 8:
+            print Html2md(t).pure_text_but_pre_l8().read()
+        elif i == 9:
+            print Html2md(t).pure_text_l9().read()
+
+    # print Html2md(t)._stash_pre_style()._pop_pre_style().read()
