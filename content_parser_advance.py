@@ -35,7 +35,7 @@ class AdvancedDescriptionParser(object):
         self.data['content'] = Html2md(items['translatedContent']).format(level)
         self.data['path'] = path
         self.data['difficulty'] = items['difficulty']
-        self.data['case'] = items['sampleTestCase'].replace('\n', '\n\t\t// simpleCase: ')
+        self.data['case'] = items['sampleTestCase'].replace('\n', '\n\t\t{} simpleCase: '.format(comment_symbol))
         self.data['topics_en'] = ', '.join(topics_en)
         self.data['topics'] = ', '.join(topics)
         self.data['percent'] = stats['acRate']
