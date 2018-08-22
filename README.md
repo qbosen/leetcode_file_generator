@@ -12,13 +12,36 @@ src_path = "your/source/path"
 python search_leetcode.py [keyword]
 
 3. run `gen_files.py` by giving specified leetcode question id
-python gen_files.py [qid]
+python gen_files.py {qid}
 ``` 
+
+### Advanced options:
+1. Create solution method declaration automatic 
+2. Can customize question description's style. Convert `html` tags to `markdown` 
+3. Build-in `10` kinds of formats `0...9`. The larger number, the fewer `html`
+4. Write the test case data in your test code
+5. Insert the image from question description to your `README.md`
+6. Get question's `topic`
+7. Support more languages
+
+Set `enable_advance=True` in `settings_advanced.py` to enable these options
+```
+format can be ignored
+python gen_files.py {qid} [format]
+```
+
 ### Note:
 1. python version: `2.7`
 2. some operations are based on the local data `dumps.txt`
 3. all codes are based on `leetcode-cn.com`, 
 if `leetcode.com` version is required, you can commit `issue` or `pull request`
+* Advanced options：
+1. Format value: `0-9`, default value is `8` if no input detected,
+The larger number, the fewer `html`, Contrasts reference [format contrast](Formats.md)
+2. Customize question description's style by invoking methods in html2md.Html2md() continuously.
+This needs to edit codes.
+3. The default language is `java`, you can change `language` setting refer to `language_map`,
+at the same time, you need to edit the `pattern`s to support comment style， namespace, template codes, etc..
 
 ### How to update `dumps.txt`
 There are two files: `html_parser.py` and `default.html`
@@ -35,7 +58,7 @@ python html_parser.py lc-2018-08.html
 ```
 
 ### Others:
-The tool is integrated in [Alfred](https://www.alfredapp.com) workflow
+The tool ~~is integrated~~ in [Alfred](https://www.alfredapp.com) workflow
 
 Project Link: [Find Leetcode](https://github.com/qbosen/Alfred-WorkFlow/tree/master/FindLeetCode)
 
