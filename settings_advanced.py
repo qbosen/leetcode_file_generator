@@ -5,6 +5,11 @@ enable_advance = True
 
 # language setting is related to the template code
 language = 'java'
+comment_symbol = '//'
+language_map = {
+    'java': '.java', 'c': '.c', 'cpp': '.cpp', 'python': '.py', 'python3': '.py', 'csharp': '.cs',
+    'javascript': '.js', 'ruby': '.rb', 'swift': '.swift', 'golang': '.go', 'scala': '.scala', 'kotlin': '.kt'
+}
 
 # keep this value false otherwise wrong result you will get
 debug_mode = False

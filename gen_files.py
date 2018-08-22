@@ -42,8 +42,9 @@ def main():
         test = ad_test_class_pattern.format(en_level=en_level, author=author, date=date, **dp_data)
 
     generate_file(package_path, 'README.md', md)
-    generate_file(package_path, 'Solution.java', solution)
-    generate_file(package_path, 'SolutionTest.java', test)
+    file_suffix = language_map[language] if language in language_map else '.java'
+    generate_file(package_path, 'Solution%s' % file_suffix, solution)
+    generate_file(package_path, 'SolutionTest%s' % file_suffix, test)
 
 
 def get_info(num):

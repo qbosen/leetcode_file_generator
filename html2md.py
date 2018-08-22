@@ -205,7 +205,7 @@ if __name__ == '__main__':
 <pre><strong>输入:</strong> [1,8,6,2,5,4,8,3,7]
 <strong>输出:</strong> 49</pre>'''
     for i in range(0, 10):
-        print '\n# Style %s' % str(i)
+        print '\n# Format %s' % str(i)
         print Html2md(t).format(i)
 
     # print Html2md(t)._stash_pre_style()._pop_pre_style().read()
