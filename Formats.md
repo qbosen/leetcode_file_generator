@@ -1,4 +1,4 @@
-### Click row button in github to see details
+### Click raw button in github to see details
 
 # Format 0
 <p>给定 <em>n</em> 个非负整数 <em>a</em><sub>1</sub>，<em>a</em><sub>2，</sub>...，<em>a</em><sub>n，</sub>每个数代表坐标中的一个点 (<em>i</em>, <em>a<sub>i</sub></em>) 。在坐标内画 <em>n</em> 条垂直线，垂直线 <em>i</em> 的两个端点分别为 (<em>i</em>, <em>a<sub>i</sub></em>) 和 (<em>i</em>, 0)。找出其中的两条线，使得它们与 <em>x</em> 轴共同构成的容器可以容纳最多的水。</p>
