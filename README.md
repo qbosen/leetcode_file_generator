@@ -58,7 +58,7 @@ python html_parser.py lc-2018-08.html
 ```
 
 ### Others:
-The tool ~~is integrated~~ in [Alfred](https://www.alfredapp.com) workflow
+The tool is integrated in [Alfred](https://www.alfredapp.com) workflow
 
 Project Link: [Find Leetcode](https://github.com/qbosen/Alfred-WorkFlow/tree/master/FindLeetCode)
 

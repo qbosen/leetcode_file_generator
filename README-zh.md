@@ -53,7 +53,7 @@ python html_parser.py lc-2018-08.html
 ```
 
 ### 其他:
-此工具~~已经集成到了~~ [Alfred](https://www.alfredapp.com) workflow
+此工具已经集成到了 [Alfred](https://www.alfredapp.com) workflow
 
 链接地址: [Find Leetcode](https://github.com/qbosen/Alfred-WorkFlow/tree/master/FindLeetCode)
 
