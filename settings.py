@@ -17,7 +17,7 @@ md_pattern = '''### {title}
 |英文名|{en_name}|
 |难度|{level}|
 |通过率|{percent}|
-|链接|[{path}](https://leetcode-cn.com/problems/{path}/description/)
+|链接|[{path}](https://leetcode-cn.com/problems/{path}/description/)|
 
 ```
 {content}
