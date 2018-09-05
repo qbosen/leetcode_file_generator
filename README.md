@@ -44,17 +44,15 @@ This needs to edit codes.
 at the same time, you need to edit the `pattern`s to support comment style， namespace, template codes, etc..
 
 ### How to update `dumps.txt`
-There are two files: `html_parser.py` and `default.html`
+Use `gen_table_readme.py` to update dumps file or generate readme file.
 
-1. open the website `https://leetcode-cn.com/problemset/all/`
-2. open `devTools` of the browser, select the element of question table. 
-    the selector is somehow like this `#question-app > ... > table > tbody.reactable-data` 
-3. if Chrome is used, right click the `tbody` element in `devTools`, select `edit as HTML`,
-    copy and create our html file like `lc-2018-08.html`
-4. use `html_parser.py` to parse html file and it will update the `dumps.txt` file 
-
+* update resources of `leetcode` which use to accelerate searching speed:
 ```bash
-python html_parser.py lc-2018-08.html
+python gen_table_readme.py update_dumps
+```
+* generate `question table` according to packages under `src_path`
+```bash
+python gen_table_readme.py update_readme
 ```
 
 ### Others:

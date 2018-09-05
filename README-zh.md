@@ -43,13 +43,15 @@ python gen_files.py {qid} [format]
 
 
 ### 如何更新数据集 `dumps.txt`
-有两个相关文件: `html_parser.py` 和 `default.html`
-1. 打开网页 `https://leetcode-cn.com/problemset/all/`
-2. 打开浏览器的开发者工具，使用元素选择器选中题目表格。选择器路径为：`#question-app > ... > table > tbody.reactable-data`
-3. 在目标 `tbody` 元素上右键，选中 `edit as HTML`, 然后复制内容，新建html文件，比如: `lc-2018-08.html`
-4. 使用 `html_parser.py` 解析html文件， 并更新 `dumps.txt`
+使用 `gen_table_readme.py` 来更新 `dumps.txt` 文件或者生产 `README.md`
+
+* 更新 `leetcode` 的本地资源，这个资源是用来加速本地搜索的。
 ```bash
-python html_parser.py lc-2018-08.html
+python gen_table_readme.py update_dumps
+```
+* 根据 `src_path` 下的包名，生成 索引表文件
+```bash
+python gen_table_readme.py update_readme
 ```
 
 ### 其他:
