@@ -37,6 +37,8 @@ symbol_map = {
     '&le;': u'≤',
     '&ge;': u'≥',
     '&#39;': '\'',
+    '&ldquo;': '\"',
+    '&rdquo;': '\"',
 }
 # the tags will be cleared in pre scope when get md preview
 # or remain when get html preview
