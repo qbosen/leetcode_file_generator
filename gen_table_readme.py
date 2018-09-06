@@ -93,7 +93,8 @@ def scan_path(src):
     def get_qids(path):
         ids = []
         pattern = re.compile(r'q0*(\d+)')
-        for d in os.listdir(path):
+        files = sorted(os.listdir(path))
+        for d in files:
             m = pattern.match(d)
             if m:
                 ids.append(m.group(1))
@@ -133,7 +134,7 @@ class Gens(object):
 
 
 if __name__ == '__main__':
-    param = sys.argv[1] if len(sys.argv) > 1 else 'update_dumps'
+    param = sys.argv[1] if len(sys.argv) > 1 else 'update_readme'
     if param == 'update_dumps':
         Gens().update_dumps()
     elif param == 'update_readme':
