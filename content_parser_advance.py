@@ -4,6 +4,7 @@ import cookielib
 import json
 import ssl
 import urllib2
+import re
 from html2md import Html2md
 from settings_advanced import *
 
@@ -11,6 +12,12 @@ from settings_advanced import *
 class AdvancedDescriptionParser(object):
     def __init__(self):
         self.data = {}
+
+    def parse_template_code(self, code):
+        signature = re.compile(r'public\s(\w+)\s(\w+)\((.*?)\)\s{')
+        m = signature.search(code)
+        if m:
+            self.data['sign'] = dict(zip(['ret', 'name', 'param'], m.groups()))
 
     def parse(self, path, level=8):
         items = query_question(path)
@@ -40,7 +47,8 @@ class AdvancedDescriptionParser(object):
         self.data['topics'] = ', '.join(topics)
         self.data['percent'] = stats['acRate']
         self.data['codes'] = codes
-
+        # add template signature
+        self.parse_template_code(codes)
         return self
 
     @property
