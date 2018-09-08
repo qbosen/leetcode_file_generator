@@ -45,8 +45,9 @@ def main():
     generate_file(package_path, 'README.md', md)
     file_suffix = language_map[language] if language in language_map else '.java'
     generate_file(package_path, 'Solution%s' % file_suffix, solution)
-    generate_file(package_path, 'Answer%s' % file_suffix, interface)
     generate_file(package_path, 'SolutionTest%s' % file_suffix, test)
+    if enable_advance:
+        generate_file(package_path, 'Answer%s' % file_suffix, interface)
 
 
 def get_info(num):
