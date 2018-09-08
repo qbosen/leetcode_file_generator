@@ -17,7 +17,10 @@ class AdvancedDescriptionParser(object):
         signature = re.compile(r'public\s(\w+)\s(\w+)\((.*?)\)\s{')
         m = signature.search(code)
         if m:
+            first_param = m.group(3)
+            idx = first_param.find(' ')
             self.data['sign'] = dict(zip(['ret', 'name', 'param'], m.groups()))
+            self.data['sign']['param_1'] = first_param[:idx] or 'void'
 
     def parse(self, path, level=8):
         items = query_question(path)
