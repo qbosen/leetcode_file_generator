@@ -56,14 +56,14 @@ public class SolutionTest {{
     @Test
     public void test() {{
         // simpleCase: {case}
-        {sign[param]} param = null;
+        {sign[param_1]} param = null;
         {sign[ret]} expect = null;
         testAnswer(param, expect);
     }}
 
-    private void testAnswer({sign[param]} input, int expect) {{
+    private void testAnswer({sign[param_1]} input, int expect) {{
         for (Answer answer : answers) {{
-            {sign[param]} param = cloner.deepClone(input);
+            {sign[param_1]} param = cloner.deepClone(input);
             {sign[ret]} result = answer.{sign[name]}(param);
 
             boolean correct = result == expect;
